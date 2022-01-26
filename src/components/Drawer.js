@@ -1,37 +1,33 @@
-function Drawer() {
+function Drawer({ setCartOpened, items }) {
   return (
-    <div style={{ display: 'none' }} className="overlay">
+    <div className="overlay">
       <div className="drawer" style={{ display: 'flex', flexDirection: 'column' }}>
         <h2 className=" d-flex justify-between mb-30 ">
           Корзина
-          <img className="cu-p" src="/img/btnremove.svg" alt="Remove" />
+          <img
+            onClick={() => setCartOpened(false)}
+            className="cu-p"
+            src="/img/btnremove.svg"
+            alt="Remove"
+          />
         </h2>
 
         <div className="items flex">
-          <div className="cartItem d-flex align-center mb-20">
-            {/* <img className="mr-20" width={70} height={70} src="/img/sneakers/1.jpg" /> */}
+          {items &&
+            items.map((item, index) => (
+              <div className="cartItem d-flex align-center mb-20">
+                {/* <img className="mr-20" width={70} height={70} src="/img/sneakers/1.jpg" /> */}
 
-            <div
-              style={{ backgroundImage: 'url(/img/sneakers/1.jpg)' }}
-              className="cartItemImg"></div>
-            <div className="mr-20 flex">
-              <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
-            </div>
-            <img className="removeBtn" src="/img/btnremove.svg" alt="Remove" />
-          </div>
-          <div className="cartItem d-flex align-center mb-20">
-            {/* <img className="mr-20" width={70} height={70} src="/img/sneakers/1.jpg" /> */}
-
-            <div
-              style={{ backgroundImage: 'url(/img/sneakers/5.jpg)' }}
-              className="cartItemImg"></div>
-            <div className="mr-20 flex">
-              <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
-            </div>
-            <img className="removeBtn" src="/img/btnremove.svg" alt="Remove" />
-          </div>
+                <div
+                  style={{ backgroundImage: `url(${item.imageUrl})` }}
+                  className="cartItemImg"></div>
+                <div className="mr-20 flex">
+                  <p className="mb-5">{item.name}</p>
+                  <b>{item.price} руб.</b>
+                </div>
+                <img className="removeBtn" src="/img/btnremove.svg" alt="Remove" />
+              </div>
+            ))}
         </div>
 
         <div className="cartTotalBlock">
