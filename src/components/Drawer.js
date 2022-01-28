@@ -14,7 +14,7 @@ function Drawer({ setCartOpened, onRemoveItem, items }) {
         </h2>
 
         {items.length > 0 ? (
-          <div>
+          <div className="d-flex flex-column flex">
             <div className="items flex">
               {items &&
                 items.map((item, index) => (
